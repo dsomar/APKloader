@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Denis' ADB Manager</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/index.css">
+  </head>
+  <body>
+      <div class="container">
+        <header>
+            <h1>ADB GUI</h1>
+        </header>
+
+        <div>
+          <form>
+            <div class="form-group">
+              <label for="FTVinputIP">What is the IP address of your Fire TV?</label>
+              <input class="form-control col-5" id="FTVinputIP" aria-describedby="emailHelp" placeholder="e.g. 192.168.7.87">
+              <small id="emailHelp" class="form-text text-muted">In your FireTV go to Settings > My Fire TV > About and look for the <em>Network</em> option to see the IP address of your.</em></small>
+            </div>
+          </form>
+        </div>
+        
+        <hr>
+        <!-- <div style="background-color: gray; width: 500px; height: 50px;" id="dragged-input">
+    Drop your files here
+        </div> -->
+        
+        <hr>
+        <textarea rows="5" class="col" id="command-output" disabled="" style="font-family: 'Courier New', Courier, monospace; overflow:scroll;"></textarea>
+
+        <!-- <div id="status">
+            This is where the status stuff goes
+        </div> -->
+        <hr>
+        <button type="submit" class="btn btn-primary">Upload APK Files</button>
+        <hr>
+
+        <footer>
+            Running NodeJS <script>document.write(process.version)</script>
+            and Electron <script>document.write(process.versions['electron'])</script>.
+        </footer>
+        
+      </div>
+
+    <script src="./gui-funct.js"></script>
+    <script>
+        // GLUE to the screen
+        function getCommandOutput() { return document.getElementById("command-output");  };
+        function getDraggedStuff() { return document.getElementById("dragged-input");  };
+        function getStatus()      { return document.getElementById("status");  };
+        // End of GLUE
+
+        backgroundProcess();
+    </script>
+  </body>
+</html>
